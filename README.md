@@ -1,5 +1,5 @@
 
-####该段代码展示了如何设置连接 获取连接的代码应该设置为单列,避免重复创建连接
+#### 该段代码展示了如何设置连接 获取连接的代码应该设置为单列,避免重复创建连接
 ```$xslt
     public ShellsCommand getShellsCommand(NginxNodeSyncVo nginxNodeSyncVo) {
         /*初始化配置 设置目标IP地址和登录用户*/
@@ -26,9 +26,9 @@
     }
 ```
 
-####创建完连接后 直接通过shellsCommand执行shell 命令即可,例如下:
+#### 创建完连接后 直接通过shellsCommand执行shell 命令即可,例如下:
 ```$xslt
     shellsCommand.exec("rm -rf *");
 ```
 
-####这就是个例子哦,哈哈哈哈
+#### 这就是个例子哦,哈哈哈哈
