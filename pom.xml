@@ -6,14 +6,16 @@
 
     <parent>
         <groupId>net.onebean</groupId>
-        <artifactId>net.onebean.spring.boot</artifactId>
-        <version>1.1.0.8.RELEASE</version>
+        <artifactId>onebean.boot.stater</artifactId>
+        <version>2.0.0.RELEASE</version>
     </parent>
-    <version>1.0.0.SNAPSHOT</version>
+
+    <version>1.0.0.RELEASE</version>
+
     <artifactId>net.onebean.data.jsch</artifactId>
     <packaging>jar</packaging>
 
-    <name>net.onebean.jsch</name>
+    <name>data.jsch</name>
     <description>jsch for onebean</description>
 
 
@@ -22,10 +24,10 @@
 
         <dependency>
             <groupId>net.onebean</groupId>
-            <artifactId>net.onebean.core.common</artifactId>
-            <version>1.0.0.SNAPSHOT</version>
+            <artifactId>net.onebean.core</artifactId>
+            <version>${core.version}</version>
+            <scope>provided</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
         <dependency>
             <groupId>com.jcraft</groupId>
@@ -40,6 +42,7 @@
         </dependency>
 
     </dependencies>
+
 
     <licenses>
         <license>
@@ -141,33 +144,36 @@
             </distributionManagement>
         </profile>
 
+        <profile>
+            <id>snapshot</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <compilerArguments>
+                                <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
+                            </compilerArguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <distributionManagement>
+                <repository>
+                    <id>releases</id>
+                    <name>Nexus Release Repository</name>
+                    <url>http://ek-nexus.eakay.cn/nexus/content/repositories/releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>Nexus Snapshot Repository</name>
+                    <url>http://ek-nexus.eakay.cn/nexus/content/repositories/snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
     </profiles>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <compilerArguments>
-                        <bootclasspath>${JAVA_HOME}/jre/lib/rt.jar</bootclasspath>
-                    </compilerArguments>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://ek-nexus.eakay.cn/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://ek-nexus.eakay.cn/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
