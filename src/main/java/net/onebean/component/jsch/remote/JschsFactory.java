@@ -25,12 +25,13 @@ public class JschsFactory {
     public static Session initSession(JschConfig config) throws JSchException {
         JSch jsch = new JSch();
 
+        if (isNotBlank(config.getRsaPath())) {
+            jsch.addIdentity(config.getRsaPath());
+        }
+
         Session session = jsch.getSession(config.getUser(), config.getHost(), config.getPort());
         if (isNotBlank(config.getPassword())) {
             session.setPassword(config.getPassword());
-        }
-        if (isNotBlank(config.getRsaPath())) {
-            session.setPassword(config.getRsaPath());
         }
         if (isNotBlank(config.getStrictHostKeyChecking())) {
             session.setConfig("StrictHostKeyChecking", config.getStrictHostKeyChecking());
