@@ -1,6 +1,6 @@
 
 ####该段代码展示了如何设置连接 获取连接的代码应该设置为单列,避免重复创建连接
-```$xslt
+```
     public ShellsCommand getShellsCommand(NginxNodeSyncVo nginxNodeSyncVo) {
         /*初始化配置 设置目标IP地址和登录用户*/
         JschsFactory.JschConfig config = new JschsFactory.JschConfig();
