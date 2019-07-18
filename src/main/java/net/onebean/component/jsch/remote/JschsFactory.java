@@ -2,7 +2,7 @@ package net.onebean.component.jsch.remote;
 
 import com.google.common.base.Charsets;
 import com.jcraft.jsch.*;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

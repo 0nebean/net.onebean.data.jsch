@@ -3,7 +3,7 @@ package net.onebean.component.jsch.remote;
 import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.Session;
-import net.onebean.common.exception.BusinessException;
+import net.onebean.core.error.BusinessException;
 
 /**
  * 操作远程linux
