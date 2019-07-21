@@ -1,4 +1,14 @@
+[![GitHub release](https://img.shields.io/badge/release-1.0.0-28a745.svg)](https://github.com/0nebean/com.alibaba.druid-0nebean.custom/releases)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
+
+Introduction
+---
+- 对 JSCH API的调用封装
+
+Documentation
+---
+- API
 #### 该段代码展示了如何设置连接 获取连接的代码应该设置为单列,避免重复创建连接
 ```java
     public ShellsCommand getShellsCommand(NginxNodeSyncVo nginxNodeSyncVo) {
