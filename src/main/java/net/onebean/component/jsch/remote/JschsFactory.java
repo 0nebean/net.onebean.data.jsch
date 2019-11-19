@@ -12,6 +12,8 @@ public class JschsFactory {
 
 
     public final static Logger logger = LoggerFactory.getLogger(JschsFactory.class);
+    //uag 部署初始化文件
+    private final static String RETURN_INFO_TEMP_FILE = "/tmp/temp";
 
     /**
      * 出事话session
@@ -163,11 +165,12 @@ public class JschsFactory {
      * @throws InterruptedException
      * @throws BusinessException 
      */
-    public static void exec(ChannelExec execChannel, String cmd)
-            throws JSchException, IOException, InterruptedException, BusinessException {
+    public static String exec(ChannelExec execChannel, String cmd) throws JSchException, IOException, InterruptedException, BusinessException {
+        final ByteArrayOutputStream commandOutPut = new ByteArrayOutputStream();
         execChannel.setCommand(cmd);
         execChannel.setInputStream(null);
         execChannel.setErrStream(System.err);
+        execChannel.setOutputStream(commandOutPut);
         InputStream err = execChannel.getErrStream();
         execChannel.connect();
 
@@ -182,7 +185,7 @@ public class JschsFactory {
                         break;
                     }
                     returnMsg = new String(tmp, 0, i, Charsets.UTF_8);
-                    logger.info(returnMsg);
+                    logger.info("returnMsg = "+returnMsg);
                 }
                 if (execChannel.isClosed()) {
                     if (err.available() > 0) {
@@ -208,6 +211,7 @@ public class JschsFactory {
             //TODO,这里抛出异常，需要针对场景处理异常，然后外层需要捕获异常进行处理（删除操作如果报文件不存在，是认为正确的）
             throw new BusinessException("999","host[" + execChannel.getSession().getHost() + "],命令[" + cmd + "]执行失败，失败信息为[" + returnMsg + "]");
         }
+        return new String(commandOutPut.toByteArray());
     }
 
     /**
@@ -248,6 +252,7 @@ public class JschsFactory {
             sftpChannel.disconnect();
         }
     }
+
 
 
     /**

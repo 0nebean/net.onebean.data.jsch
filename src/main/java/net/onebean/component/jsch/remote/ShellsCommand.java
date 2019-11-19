@@ -33,6 +33,7 @@ public class ShellsCommand {
      * @since 1.0.0
      */
     public void exec(String cmd) throws BusinessException {
+        cmd = cmd.replace("\\","/");
         JschsFactory.logger.info("executing command: " + cmd);
         Session session = null;
         ChannelExec execChannel = null;
@@ -48,6 +49,36 @@ public class ShellsCommand {
             JschsFactory.closeChannel(execChannel);
             JschsFactory.closeSession(session);
         }
+    }
+
+    /**
+     * 执行shell命令
+     *
+     * @param cmd
+     * @return
+     * @author 0neBean
+     * @throws BusinessException
+     * @since 1.0.0
+     */
+    public String execReturnInfo(String cmd) throws BusinessException {
+        String res;
+        cmd = cmd.replace("\\", "/");
+        JschsFactory.logger.info("executing command: " + cmd);
+        Session session = null;
+        ChannelExec execChannel = null;
+        try {
+            session = JschsFactory.initSession(this.config);
+            execChannel = JschsFactory.initChannelExec(session);
+            res = JschsFactory.exec(execChannel, cmd);
+        } catch (Exception e) {
+            String message = "执行命令[" + cmd + "]失败";
+            JschsFactory.logger.error(message, e);
+            throw new BusinessException("999", message + " e = " + e.getMessage() + e.getCause());
+        } finally {
+            JschsFactory.closeChannel(execChannel);
+            JschsFactory.closeSession(session);
+        }
+        return res;
     }
 
     /**
