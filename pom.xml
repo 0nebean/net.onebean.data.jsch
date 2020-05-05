@@ -7,10 +7,10 @@
     <parent>
         <groupId>net.onebean</groupId>
         <artifactId>onebean.boot.stater</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1.RELEASE</version>
     </parent>
 
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0.RELEASE</version>
 
     <artifactId>net.onebean.data.jsch</artifactId>
     <packaging>jar</packaging>
@@ -54,18 +54,19 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/0nebean</url>
-        <connection>git@github.com:0nebean/net.onebean.core.git</connection>
-        <developerConnection>http://kepler.onebean.net/</developerConnection>
+        <url>https://github.com/0nebean/net.onebean.data.jsch</url>
+        <connection>git@github.com:0nebean/net.onebean.data.jsch.git</connection>
+        <developerConnection>https://github.com/0nebean</developerConnection>
     </scm>
 
     <developers>
         <developer>
             <name>0neBean</name>
             <email>pein790751571@aliyun.com</email>
-            <url>http://kepler.onebean.net/</url>
+            <url>https://github.com/0nebean</url>
         </developer>
     </developers>
+
 
     <profiles>
         <profile>

@@ -25,12 +25,8 @@ public class ShellsCommand {
 
     /**
      * 执行shell命令
-     *
-     * @param cmd
-     * @return
-     * @author 0neBean
-     * @throws BusinessException 
-     * @since 1.0.0
+     * @param cmd 命令
+     * @throws BusinessException 业务异常
      */
     public void exec(String cmd) throws BusinessException {
         cmd = cmd.replace("\\","/");
@@ -52,13 +48,10 @@ public class ShellsCommand {
     }
 
     /**
-     * 执行shell命令
-     *
-     * @param cmd
-     * @return
-     * @author 0neBean
-     * @throws BusinessException
-     * @since 1.0.0
+     * 执行shell命令 并返回信息
+     * @param cmd 命令
+     * @return 返回值
+     * @throws BusinessException 业务异常
      */
     public String execReturnInfo(String cmd) throws BusinessException {
         String res;
@@ -83,7 +76,6 @@ public class ShellsCommand {
 
     /**
      * 远程拷贝文件，可以拷贝文件夹
-     *
      * @param sPath 源路径
      * @param dPath 目的路径
      * @author 0neBean
